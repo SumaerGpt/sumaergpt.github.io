@@ -1,16 +1,1627 @@
 <!DOCTYPE html>
-<html>
+
+<html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>replit</title>
-  <link href="style.css" rel="stylesheet" type="text/css" />
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Preeclampsia Case Study</title>
+
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+        html {
+            width: 100%;
+            height: 100%;
+        }
+        
+
+        body {
+
+            font-family: 'Inter', Arial, sans-serif;
+
+            line-height: 1.6;
+
+            color: #333;
+
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+            min-height: 100vh;
+
+            padding: 20px;
+
+        }
+
+        
+
+        .document-container {
+
+            max-width: 8.5in;
+
+            margin: 0 auto;
+
+            background: white;
+
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+
+            border-radius: 10px;
+
+            overflow: hidden;
+
+            position: relative;
+
+        }
+
+        
+
+        .header {
+
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+
+            color: white;
+
+            padding: 30px;
+
+            text-align: center;
+
+            position: relative;
+
+            overflow: hidden;
+
+        }
+
+        
+
+        .header::before {
+
+            content: '';
+
+            position: absolute;
+
+            top: -50%;
+
+            left: -50%;
+
+            width: 200%;
+
+            height: 200%;
+
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+
+            opacity: 0.3;
+
+        }
+
+        
+
+        .header-content {
+
+            position: relative;
+
+            z-index: 2;
+
+        }
+
+        
+
+        .school-logo {
+
+            width: 80px;
+
+            height: 80px;
+
+            background: rgba(255,255,255,0.2);
+
+            border-radius: 50%;
+
+            margin: 0 auto 20px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 24px;
+
+            font-weight: bold;
+
+            backdrop-filter: blur(10px);
+
+        }
+
+        
+
+        .document-content {
+
+            padding: 40px;
+
+        }
+
+        
+
+        .title-section {
+
+            text-align: center;
+
+            margin-bottom: 40px;
+
+            padding: 30px;
+
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+
+            border-radius: 15px;
+
+            color: white;
+
+            position: relative;
+
+            overflow: hidden;
+
+        }
+
+        
+
+        .title-section::before {
+
+            content: '🫀';
+
+            position: absolute;
+
+            top: 20px;
+
+            right: 30px;
+
+            font-size: 48px;
+
+            opacity: 0.3;
+
+        }
+
+        
+
+        .section {
+
+            margin-bottom: 40px;
+
+            background: #f8f9fa;
+
+            border-radius: 12px;
+
+            padding: 25px;
+
+            border-left: 5px solid #667eea;
+
+            position: relative;
+
+        }
+
+        
+
+        .section-header {
+
+            display: flex;
+
+            align-items: center;
+
+            margin-bottom: 20px;
+
+            padding-bottom: 10px;
+
+            border-bottom: 2px solid #e9ecef;
+
+        }
+
+        
+
+        .section-icon {
+
+            width: 40px;
+
+            height: 40px;
+
+            background: linear-gradient(135deg, #667eea, #764ba2);
+
+            border-radius: 10px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            color: white;
+
+            font-size: 20px;
+
+            margin-right: 15px;
+
+        }
+
+        
+
+        .dialogue-box {
+
+            background: linear-gradient(135deg, #e8f4f8 0%, #f3f9fc 100%);
+
+            border-radius: 12px;
+
+            padding: 20px;
+
+            margin: 20px 0;
+
+            border-left: 4px solid #3498db;
+
+            font-style: italic;
+
+        }
+
+        
+
+        .dialogue-box .speaker {
+
+            font-weight: bold;
+
+            color: #2c3e50;
+
+            font-style: normal;
+
+        }
+
+        
+
+        .data-table {
+
+            width: 100%;
+
+            border-collapse: collapse;
+
+            margin: 20px 0;
+
+            background: white;
+
+            border-radius: 12px;
+
+            overflow: hidden;
+
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+
+        }
+
+        
+
+        .data-table th {
+
+            background: linear-gradient(135deg, #667eea, #764ba2);
+
+            color: white;
+
+            padding: 15px;
+
+            text-align: left;
+
+            font-weight: 600;
+
+        }
+
+        
+
+        .data-table td {
+
+            padding: 12px 15px;
+
+            border-bottom: 1px solid #e9ecef;
+
+        }
+
+        
+
+        .data-table tr:nth-child(even) {
+
+            background: #f8f9fa;
+
+        }
+
+        
+
+        .abnormal-high {
+
+            background: linear-gradient(135deg, #ff6b6b, #ee5a52) !important;
+
+            color: white;
+
+            font-weight: 600;
+
+            position: relative;
+
+        }
+
+        
+
+        .abnormal-low {
+
+            background: linear-gradient(135deg, #4ecdc4, #44a08d) !important;
+
+            color: white;
+
+            font-weight: 600;
+
+        }
+
+        
+
+        .pathophys-diagram {
+
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+
+            border-radius: 15px;
+
+            padding: 25px;
+
+            margin: 25px 0;
+
+            text-align: center;
+
+            position: relative;
+
+            overflow: hidden;
+
+        }
+
+        
+
+        .pathophys-diagram::before {
+
+            content: '';
+
+            position: absolute;
+
+            top: 0;
+
+            left: 0;
+
+            right: 0;
+
+            bottom: 0;
+
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.3)"/><circle cx="80" cy="80" r="1.5" fill="rgba(255,255,255,0.3)"/><circle cx="40" cy="70" r="1" fill="rgba(255,255,255,0.3)"/><circle cx="70" cy="30" r="2.5" fill="rgba(255,255,255,0.3)"/></svg>');
+
+            pointer-events: none;
+
+        }
+
+        
+
+        .flow-arrow {
+
+            display: inline-block;
+
+            margin: 0 15px;
+
+            font-size: 24px;
+
+            color: #667eea;
+
+            animation: pulse 2s infinite;
+
+        }
+
+        
+
+        @keyframes pulse {
+
+            0%, 100% { opacity: 1; }
+
+            50% { opacity: 0.5; }
+
+        }
+
+        
+
+        .highlight-box {
+
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+
+            border-radius: 12px;
+
+            padding: 20px;
+
+            margin: 20px 0;
+
+            border-left: 5px solid #ff6b6b;
+
+            position: relative;
+
+        }
+
+        
+
+        .highlight-box::before {
+
+            content: '⚠️';
+
+            position: absolute;
+
+            top: 15px;
+
+            right: 20px;
+
+            font-size: 24px;
+
+        }
+
+        
+
+        .questions-box {
+
+            background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%);
+
+            border-radius: 12px;
+
+            padding: 25px;
+
+            margin: 25px 0;
+
+            border-left: 5px solid #9b59b6;
+
+        }
+
+        
+
+        .questions-box h4 {
+
+            color: #8e44ad;
+
+            margin-bottom: 15px;
+
+            display: flex;
+
+            align-items: center;
+
+        }
+
+        
+
+        .answer-box {
+
+            background: linear-gradient(135deg, #c3f0ca 0%, #e8f5e8 100%);
+
+            border-radius: 12px;
+
+            padding: 25px;
+
+            margin: 25px 0;
+
+            border-left: 5px solid #27ae60;
+
+        }
+
+        
+
+        .answer-box h4 {
+
+            color: #27ae60;
+
+            margin-bottom: 15px;
+
+            font-weight: 600;
+
+        }
+
+        
+
+        .timeline {
+
+            position: relative;
+
+            padding: 20px 0;
+
+        }
+
+        
+
+        .timeline::before {
+
+            content: '';
+
+            position: absolute;
+
+            left: 30px;
+
+            top: 0;
+
+            bottom: 0;
+
+            width: 3px;
+
+            background: linear-gradient(to bottom, #667eea, #764ba2);
+
+        }
+
+        
+
+        .timeline-item {
+
+            position: relative;
+
+            padding: 20px 0 20px 70px;
+
+            margin-bottom: 20px;
+
+        }
+
+        
+
+        .timeline-marker {
+
+            position: absolute;
+
+            left: 20px;
+
+            top: 25px;
+
+            width: 20px;
+
+            height: 20px;
+
+            background: #667eea;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            color: white;
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+        }
+
+        
+
+        .visual-separator {
+
+            height: 3px;
+
+            background: linear-gradient(90deg, #667eea, #764ba2, #667eea);
+
+            border-radius: 2px;
+
+            margin: 30px 0;
+
+            animation: shimmer 3s infinite;
+
+        }
+
+        
+
+        @keyframes shimmer {
+
+            0% { opacity: 0.5; }
+
+            50% { opacity: 1; }
+
+            100% { opacity: 0.5; }
+
+        }
+
+        
+
+        .organ-system-grid {
+
+            display: grid;
+
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+            gap: 20px;
+
+            margin: 25px 0;
+
+        }
+
+        
+
+        .organ-card {
+
+            background: white;
+
+            border-radius: 12px;
+
+            padding: 20px;
+
+            text-align: center;
+
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+
+            transition: transform 0.3s ease;
+
+            border: 2px solid transparent;
+
+        }
+
+        
+
+        .organ-card:hover {
+
+            transform: translateY(-5px);
+
+            border-color: #667eea;
+
+        }
+
+        
+
+        .organ-icon {
+
+            font-size: 48px;
+
+            margin-bottom: 15px;
+
+            display: block;
+
+        }
+
+        
+
+        .credits-section {
+
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+            color: white;
+
+            padding: 25px;
+
+            margin: 30px 0 0 0;
+
+            border-radius: 12px;
+
+            text-align: center;
+
+        }
+
+        
+
+        .credits-section h3 {
+
+            margin-bottom: 15px;
+
+            font-size: 18px;
+
+        }
+
+        
+
+        .credits-section p {
+
+            font-size: 14px;
+
+            opacity: 0.9;
+
+            line-height: 1.8;
+
+        }
+
+        
+
+        @media print {
+
+            body {
+
+                background: white;
+
+                padding: 0;
+
+            }
+
+            
+
+            .document-container {
+
+                box-shadow: none;
+
+                border-radius: 0;
+
+            }
+
+        }
+
+    </style>
+
 </head>
 
 <body>
-  Hello world
-  <script src="script.js"></script>
+
+    <div class="document-container">
+
+        <div class="header">
+
+            <div class="header-content">
+
+                <div class="school-logo">SG</div>
+
+                <h1>Sumaer Gupta - Pathophysiology Final Project</h1>
+
+                <h2>Walker | BD12</h2>
+
+            </div>
+
+        </div>
+
+        
+
+        <div class="document-content">
+
+            <div class="title-section">
+
+                <h1>Preeclampsia: Case Study</h1>
+
+                <p><strong>Author:</strong> Sumaer Gupta (with some help from Aitran Le and Aditya Tiwari!!)</p>
+
+                <p><strong>Date:</strong> May 22, 2025</p>
+
+            </div>
+
+            
+
+            <div class="section">
+
+                <div class="section-header">
+
+                    <div class="section-icon">🏥</div>
+
+                    <h2>Part 1: The Presenting Case</h2>
+
+                </div>
+
+                
+
+                <div class="highlight-box">
+
+                    <h3>Main concerns or symptoms</h3>
+
+                    <p>Severe headaches, visual disturbances, and swelling in hands and face</p>
+
+                </div>
+
+                
+
+                <h3>Patient Background</h3>
+
+                <p><strong>Sarah Martinez</strong>, a 28-year-old Hispanic woman, presents to the emergency department at 34 weeks gestation with her first pregnancy. Over the past week, she has experienced increasingly severe headaches that do not respond to acetaminephen, episodes of blurred vision with "spots" in her visual field, and significant swelling in her hands and face that developed rapidly over 48 hours.</p>
+
+                
+
+                <div class="dialogue-box">
+
+                    <p><span class="speaker">Dr. Chen:</span> "Sarah, I'm Dr. Chen from the emergency department. Can you tell me about these headaches you've been having?"</p>
+
+                    <p><span class="speaker">Sarah:</span> "They started about a week ago, but they're getting so much worse. Nothing helps - not Tylenol, not rest, nothing. And today I keep seeing these weird flashing spots when I look around."</p>
+
+                    <p><span class="speaker">Dr. Chen:</span> "I notice your hands and face look quite swollen. When did that start?"</p>
+
+                    <p><span class="speaker">Sarah:</span> "Just two days ago! I woke up and could barely get my wedding ring off. My husband said my face looked puffy too. Is something wrong with the baby?"</p>
+
+                </div>
+
+                
+
+                <div class="pathophys-diagram">
+
+                    <h4>Timeline of Symptom Development</h4>
+
+                    <div class="timeline">
+
+                        <div class="timeline-item">
+
+                            <div class="timeline-marker">1</div>
+
+                            <strong>Week 1:</strong> Mild headaches begin - Sarah thinks it's just pregnancy stress
+
+                        </div>
+
+                        <div class="timeline-item">
+
+                            <div class="timeline-marker">2</div>
+
+                            <strong>Days 5-6:</strong> Visual disturbances appear - "like camera flashes in my eyes"
+
+                        </div>
+
+                        <div class="timeline-item">
+
+                            <div class="timeline-marker">3</div>
+
+                            <strong>Days 6-7:</strong> Rapid onset facial/hand edema - "couldn't get my ring off"
+
+                        </div>
+
+                        <div class="timeline-item">
+
+                            <div class="timeline-marker">4</div>
+
+                            <strong>Day 7:</strong> Emergency department presentation - "I'm scared something's wrong"
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                
+
+                <h3>Initial Assessment</h3>
+
+                <p>Upon arrival, the nurse immediately recognized the concerning constellation of symptoms. Sarah's blood pressure was alarmingly elevated, and her appearance showed obvious facial edema. The medical team moved quickly to assess her condition.</p>
+
+                
+
+                <div class="dialogue-box">
+
+                    <p><span class="speaker">Nurse:</span> "Sarah, I need to check your blood pressure. Try to relax your arm for me."</p>
+
+                    <p><span class="speaker">Sarah:</span> "Is it high? I've never had blood pressure problems before."</p>
+
+                    <p><span class="speaker">Nurse:</span> "It's elevated - 168 over 105. Dr. Chen, we need you right away."</p>
+
+                    <p><span class="speaker">Dr. Chen:</span> "Sarah, we're going to run some tests immediately. This could be preeclampsia, which is serious but treatable. The most important thing is getting you and baby the care you need."</p>
+
+                </div>
+
+                
+
+                <table class="data-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Parameter</th>
+
+                            <th>Sarah's Results</th>
+
+                            <th>Normal Range</th>
+
+                            <th>Clinical Significance</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+
+                            <td><strong>Vital Signs</strong></td>
+
+                            <td></td>
+
+                            <td></td>
+
+                            <td></td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>Systolic BP (mmHg)</td>
+
+                            <td class="abnormal-high">168</td>
+
+                            <td>≤120</td>
+
+                            <td>Severe hypertension</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>Diastolic BP (mmHg)</td>
+
+                            <td class="abnormal-high">105</td>
+
+                            <td>≤80</td>
+
+                            <td>Stage 2 hypertension</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>Heart Rate (bpm)</td>
+
+                            <td>95</td>
+
+                            <td>60-100</td>
+
+                            <td>Upper normal</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>Respiratory Rate</td>
+
+                            <td class="abnormal-high">22</td>
+
+                            <td>12-20</td>
+
+                            <td>Mild tachypnea</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td><strong>Laboratory Values</strong></td>
+
+                            <td></td>
+
+                            <td></td>
+
+                            <td></td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>Hemoglobin (g/100ml)</td>
+
+                            <td class="abnormal-low">10.8</td>
+
+                            <td>12-16</td>
+
+                            <td>Mild anemia</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>Platelet Count (/mm³)</td>
+
+                            <td class="abnormal-low">85,000</td>
+
+                            <td>150,000-400,000</td>
+
+                            <td>Thrombocytopenia</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>Creatinine (mg/100ml)</td>
+
+                            <td class="abnormal-high">1.8</td>
+
+                            <td>0.6-1.5</td>
+
+                            <td>Renal impairment</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>Urine Protein</td>
+
+                            <td class="abnormal-high">4+ (>5g/day)</td>
+
+                            <td>None to trace</td>
+
+                            <td>Severe proteinuria</td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+                
+
+                <div class="dialogue-box">
+
+                    <p><span class="speaker">Dr. Chen:</span> "Sarah, the lab results confirm our suspicions. You have severe preeclampsia. Your kidneys are being affected, which is why we're seeing protein in your urine and elevated creatinine."</p>
+
+                    <p><span class="speaker">Sarah:</span> "What does that mean for my baby? It's too early - I'm only 34 weeks!"</p>
+
+                    <p><span class="speaker">Dr. Chen:</span> "We're consulting with the maternal-fetal medicine team right now. Modern medicine has come a long way - babies born at 34 weeks do very well with proper care. Right now, we need to focus on keeping both of you safe."</p>
+
+                </div>
+
+                
+
+                <div class="questions-box">
+
+                    <h4>Questions to answer</h4>
+
+                    <ol>
+
+                        <li>What are the key clinical manifestations that suggest preeclampsia in Sarah's case?</li>
+
+                        <li>Which laboratory values are most concerning and what do they indicate about organ system involvement?</li>
+
+                        <li>What pathophysiological mechanisms could explain the rapid onset of Sarah's symptoms?</li>
+
+                    </ol>
+
+                </div>
+
+                
+
+                <div class="answer-box">
+
+                    <h4>Answers</h4>
+
+                    <ol>
+
+                        <li><strong>Key manifestations:</strong> Sarah presents with the classic triad of severe hypertension (168/105), proteinuria (4+), and edema (hands/face). The severe headaches and visual disturbances indicate neurological involvement, while rapid symptom progression suggests severe preeclampsia.</li>
+
+                        <li><strong>Most concerning labs:</strong> Thrombocytopenia (85,000 platelets) and elevated creatinine (1.8) are most concerning as they indicate HELLP syndrome development and acute kidney injury respectively, suggesting multi-organ involvement beyond just cardiovascular effects.</li>
+
+                        <li><strong>Rapid onset mechanisms:</strong> Poor placental implantation leads to chronic hypoxia, triggering massive release of anti-angiogenic factors (sFlt-1, sEng) that cause widespread endothelial dysfunction, vasoconstriction, and increased vascular permeability throughout the body.</li>
+
+                    </ol>
+
+                </div>
+
+            </div>
+
+            
+
+            <div class="visual-separator"></div>
+
+            
+
+            <div class="section">
+
+                <div class="section-header">
+
+                    <div class="section-icon">🧬</div>
+
+                    <h2>Part 2: What really is preeclampsia?</h2>
+
+                </div>
+
+                
+
+                <h3>The Disease Process Unfolds</h3>
+
+                <p>As Sarah's condition was being stabilized, Dr. Chen took time to explain to her and her husband what was happening in her body. Preeclampsia is fundamentally a disorder of the placenta that affects the entire maternal body through a cascade of molecular events.</p>
+
+                
+
+                <div class="dialogue-box">
+
+                    <p><span class="speaker">Dr. Chen:</span> "Think of preeclampsia as your body's response to a placenta that isn't getting enough blood flow. When the placenta struggles, it releases substances that affect your blood vessels throughout your entire body."</p>
+
+                    <p><span class="speaker">Sarah's husband, Miguel:</span> "But why is this happening now? Everything seemed fine at her last appointment."</p>
+
+                    <p><span class="speaker">Dr. Chen:</span> "That's exactly how preeclampsia works - it can develop rapidly. The placental problems actually started early in pregnancy, but your body compensated until it couldn't anymore. That's why Sarah's symptoms appeared so suddenly this week."</p>
+
+                </div>
+
+                
+
+                <div class="pathophys-diagram">
+
+                    <h3>Pathophysiological Flowchart</h3>
+
+                    <p><strong>Poor Placental Implantation (8-12 weeks)</strong></p>
+
+                    <span class="flow-arrow">↓</span>
+
+                    <p><strong>Inadequate Spiral Artery Remodeling</strong></p>
+
+                    <span class="flow-arrow">↓</span>
+
+                    <p><strong>Chronic Placental Hypoxia</strong></p>
+
+                    <span class="flow-arrow">↓</span>
+
+                    <p><strong>Release of Anti-angiogenic Factors (sFlt-1, sEng)</strong></p>
+
+                    <span class="flow-arrow">↓</span>
+
+                    <p><strong>Systemic Endothelial Dysfunction</strong></p>
+
+                </div>
+
+                
+
+                <h3>Sarah's Condition Worsens - Hour by Hour</h3>
+
+                <p>Over the next 24 hours in the hospital, Sarah's medical team closely monitored her condition. What they observed was the classic pattern of preeclampsia progression - multiple organ systems becoming involved as the disease process accelerated.</p>
+
+                
+
+                <div class="dialogue-box">
+
+                    <p><span class="speaker">Dr. Patel:</span> "Sarah, we've been watching your numbers closely overnight. I need to be honest with you - things are getting worse despite our treatments."</p>
+
+                    <p><span class="speaker">Sarah:</span> "Worse how? I actually feel a little better since you gave me that medication for my headache."</p>
+
+                    <p><span class="speaker">Dr. Patel:</span> "That's the tricky thing about preeclampsia. Sometimes patients feel better while their lab values are actually deteriorating. Your platelet count has dropped more, and your liver enzymes are rising. This suggests you're developing HELLP syndrome."</p>
+
+                    <p><span class="speaker">Miguel:</span> "What's HELLP syndrome? That sounds scary."</p>
+
+                    <p><span class="speaker">Dr. Patel:</span> "It stands for Hemolysis, Elevated Liver enzymes, and Low Platelets. It's a severe form of preeclampsia that affects your blood and liver. The good news is we know how to treat it, but we need to act quickly."</p>
+
+                </div>
+
+                
+
+                <div class="organ-system-grid">
+
+                    <div class="organ-card">
+
+                        <span class="organ-icon">❤️</span>
+
+                        <h4>Cardiovascular</h4>
+
+                        <p>Sarah's blood vessels constricted, causing severe hypertension and increased workload on her heart</p>
+
+                    </div>
+
+                    <div class="organ-card">
+
+                        <span class="organ-icon">🫘</span>
+
+                        <h4>Renal</h4>
+
+                        <p>Kidney damage from swollen glomeruli led to protein spillage and rising creatinine levels</p>
+
+                    </div>
+
+                    <div class="organ-card">
+
+                        <span class="organ-icon">🫁</span>
+
+                        <h4>Hepatic</h4>
+
+                        <p>Liver cell damage from microclots caused rising enzyme levels - part of HELLP syndrome</p>
+
+                    </div>
+
+                    <div class="organ-card">
+
+                        <span class="organ-icon">🧠</span>
+
+                        <h4>Neurological</h4>
+
+                        <p>Brain swelling and vascular changes caused Sarah's severe headaches and visual symptoms</p>
+
+                    </div>
+
+                </div>
+
+                
+
+                <h3>Disease Progression: 48-Hour Follow-up</h3>
+
+                <table class="data-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Parameter</th>
+
+                            <th>Initial</th>
+
+                            <th>48-Hour</th>
+
+                            <th>Change</th>
+
+                            <th>Clinical Implication</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>Systolic BP</td>
+
+                            <td class="abnormal-high">168</td>
+
+                            <td class="abnormal-high">178</td>
+
+                            <td>↑ 10</td>
+
+                            <td>Worsening hypertension</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>Platelets</td>
+
+                            <td class="abnormal-low">85,000</td>
+
+                            <td class="abnormal-low">65,000</td>
+
+                            <td>↓ 20,000</td>
+
+                            <td>Progressive thrombocytopenia</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>ALT (units/ml)</td>
+
+                            <td class="abnormal-high">68</td>
+
+                            <td class="abnormal-high">125</td>
+
+                            <td>↑ 57</td>
+
+                            <td>HELLP syndrome development</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>Creatinine</td>
+
+                            <td class="abnormal-high">1.8</td>
+
+                            <td class="abnormal-high">2.3</td>
+
+                            <td>↑ 0.5</td>
+
+                            <td>Acute kidney injury</td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+                
+
+                <div class="dialogue-box">
+
+                    <p><span class="speaker">Sarah:</span> "Dr. Patel, I don't understand. If this started with my placenta, why is it affecting my whole body? My liver, my kidneys, everything?"</p>
+
+                    <p><span class="speaker">Dr. Patel:</span> "That's a great question, Sarah. Your placenta is releasing chemicals called anti-angiogenic factors - think of them as signals that damage blood vessel function throughout your body. They're affecting every organ system, not just where they started."</p>
+
+                    <p><span class="speaker">Miguel:</span> "So it's like a domino effect?"</p>
+
+                    <p><span class="speaker">Dr. Patel:</span> "Exactly. The placental problem triggers a cascade that affects Sarah's cardiovascular system, kidneys, liver, and brain. That's why we need to deliver the baby - removing the source of these harmful factors is the only definitive cure."</p>
+
+                </div>
+
+                
+
+                <div class="highlight-box">
+
+                    <h3>HELLP Syndrome Development</h3>
+
+                    <p><strong>H</strong>emolysis, <strong>E</strong>levated <strong>L</strong>iver enzymes, <strong>L</strong>ow <strong>P</strong>latelets - a severe variant of preeclampsia occurring in 10-20% of severe cases. Sarah's case demonstrated the classic progression, with her platelet count dropping dangerously low while her liver enzymes climbed rapidly.</p>
+
+                </div>
+
+                
+
+                <div class="questions-box">
+
+                    <h4>Questions to answer</h4>
+
+                    <ol>
+
+                        <li>How do these substances cause damage to blood vessels and lead to unusual lab results?</li>
+
+                        <li>How does the body try to protect vital organs like the brain and heart when blood flow is reduced?</li>
+
+                    </ol>
+
+                </div>
+
+                
+
+                <div class="answer-box">
+
+                    <h4>Answers</h4>
+
+                    <ol>
+
+                        <li>In preeclampsia, the placenta releases proteins called sFlt-1 and sEng that damage the lining of blood vessels. This damage, called endothelial dysfunction, leads to high blood pressure, protein in the urine, and problems with the kidneys, liver, and blood. For example, the kidneys leak protein, liver enzymes go up, platelets drop, and creatinine levels rise, showing kidney stress.
+
+</li>
+
+                        <li>To protect important organs like the brain and heart, the body responds by raising blood pressure and heart rate. It also sends less blood to non-essential areas so that vital organs get the oxygen they need. These changes help keep the body working while it’s under stress.
+
+</li>
+
+                    </ol>
+
+                </div>
+
+            </div>
+
+            
+
+            <div class="visual-separator"></div>
+
+            
+
+            <div class="section">
+
+                <div class="section-header">
+
+                    <div class="section-icon">🏥</div>
+
+                    <h2>Part 3: How should we help her?!</h2>
+
+                    <p style="font-size: 14px; color: #666; font-style: italic;">- some doctor probably somewhere haha</p>
+
+                </div>
+
+                
+
+                <h3>The Critical Decision</h3>
+
+                <p>As Sarah's condition continued to deteriorate, the medical team faced the difficult decision that defines severe preeclampsia management: when to deliver. At 34 weeks, the baby would be premature, but waiting longer posed increasing risks to both mother and child.</p>
+
+                
+
+                <div class="dialogue-box">
+
+                    <p><span class="speaker">Dr. Patel:</span> "Sarah, Miguel, we need to talk about delivery. Your HELLP syndrome is progressing, and we can't wait any longer."</p>
+
+                    <p><span class="speaker">Sarah:</span> "But it's too early! What if something happens to the baby?"</p>
+
+                    <p><span class="speaker">Dr. Patel:</span> "I understand your fears. Babies born at 34 weeks have excellent outcomes - over 95% do very well. But if we wait, both you and the baby face serious risks. Your platelets are now dangerously low at 65,000, and your liver enzymes are climbing rapidly."</p>
+
+                    <p><span class="speaker">Miguel:</span> "What exactly will happen during the delivery?"</p>
+
+                    <p><span class="speaker">Dr. Patel:</span> "We'll need to do a cesarean section. Before surgery, we'll give you magnesium sulfate to prevent seizures, and we'll have the NICU team ready for the baby. The anesthesiologist will use special techniques because of your blood pressure."</p>
+
+                </div>
+
+                
+
+                <div class="highlight-box">
+
+                    <h3>Immediate Management Decision</h3>
+
+                    <p>Given Sarah's deteriorating condition and HELLP syndrome, immediate cesarean delivery was performed at 34 weeks gestation. Magnesium sulfate administered for seizure prophylaxis, with careful blood pressure management throughout the procedure.</p>
+
+                </div>
+
+                
+
+                <h3>The Surgery and Immediate Aftermath</h3>
+
+                <p>Sarah's surgery proceeded smoothly despite the complications of her condition. The medical team had to carefully manage her blood pressure during anesthesia while monitoring for any signs of bleeding due to her low platelet count.</p>
+
+                
+
+                <div class="dialogue-box">
+
+                    <p><span class="speaker">Dr. Rodriguez (Anesthesiologist):</span> "Sarah, we're going to give you spinal anesthesia, but we need to be extra careful because of your platelet count. You might feel some pressure, but no pain."</p>
+
+                    <p><span class="speaker">Sarah:</span> "I'm so scared. What if something goes wrong?"</p>
+
+                    <p><span class="speaker">Dr. Rodriguez:</span> "We've done this many times with preeclampsia patients. Our team is prepared for everything. Just focus on meeting your baby soon."</p>
+
+                    <p><span class="speaker">Dr. Patel:</span> "Sarah, your baby is here! She's crying - that's exactly what we want to hear!"</p>
+
+                    <p><span class="speaker">Sarah (crying):</span> "Is she okay? She's so small!"</p>
+
+                    <p><span class="speaker">Dr. Kim (Neonatologist):</span> "She's beautiful, Sarah. 4 pounds, 8 ounces - that's perfect for 34 weeks. She's breathing on her own, which is wonderful."</p>
+
+                </div>
+
+                
+
+                <h3>Recovery</h3>
+
+                <p>Recovery from severe preeclampsia doesn't happen immediately after delivery. Sarah's body needed time to clear the harmful substances and for her organs to heal. The medical team monitored her closely, as the first 48-72 hours post-delivery are often when symptoms are at their worst.</p>
+
+                
+
+                <table class="data-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Parameter</th>
+
+                            <th>Pre-Delivery</th>
+
+                            <th>24h Post</th>
+
+                            <th>72h Post</th>
+
+                            <th>Recovery Pattern</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>Systolic BP</td>
+
+                            <td class="abnormal-high">178</td>
+
+                            <td class="abnormal-high">185</td>
+
+                            <td class="abnormal-high">145</td>
+
+                            <td>Initial worsening, then improvement</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>Platelets</td>
+
+                            <td class="abnormal-low">65,000</td>
+
+                            <td class="abnormal-low">58,000</td>
+
+                            <td class="abnormal-low">95,000</td>
+
+                            <td>Nadir at 24h, gradual recovery</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>ALT</td>
+
+                            <td class="abnormal-high">125</td>
+
+                            <td class="abnormal-high">158</td>
+
+                            <td class="abnormal-high">89</td>
+
+                            <td>Peak at 24h, rapid improvement</td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>Creatinine</td>
+
+                            <td class="abnormal-high">2.3</td>
+
+                            <td class="abnormal-high">2.8</td>
+
+                            <td class="abnormal-high">1.9</td>
+
+                            <td>Delayed recovery pattern</td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+                
+
+                <div class="dialogue-box">
+
+                    <p><span class="speaker">Sarah (Day 2 post-delivery):</span> "Dr. Patel, I feel worse today than yesterday. My head is pounding again, and I'm worried something's wrong."</p>
+
+                    <p><span class="speaker">Dr. Patel:</span> "This is actually very normal, Sarah. Your blood pressure is a bit higher today, and your platelets dropped a little more. But this is the expected pattern - it often gets worse before it gets better."</p>
+
+                    <p><span class="speaker">Miguel:</span> "Why does it get worse after the baby is born? I thought removing the placenta would fix everything."</p>
+
+                    <p><span class="speaker">Dr. Patel:</span> "The placenta was the source of the problem, but those harmful substances are still circulating in Sarah's blood. Plus, surgery and the stress of delivery can temporarily worsen things. By day 3 or 4, we should see real improvement."</p>
+
+                </div>
+
+                
+
+                <div class="dialogue-box">
+
+                    <p><span class="speaker">Sarah (Day 5 post-delivery):</span> "I actually feel human again today! My headache is almost gone."</p>
+
+                    <p><span class="speaker">Dr. Patel:</span> "Your numbers are looking much better too. Your platelets are up to 120,000, your blood pressure is down to 140/85, and your kidney function is improving. You're on the right track."</p>
+
+                    <p><span class="speaker">Sarah:</span> "When can I go home? When can baby Emma come home?"</p>
+
+                    <p><span class="speaker">Dr. Patel:</span> "You should be able to go home in a couple of days. Emma will need to stay in the NICU for probably 2-3 more weeks to grow a bit more and make sure her lungs are fully mature. But she's doing beautifully."</p>
+
+                    <p><span class="speaker">Dr. Patel (at discharge):</span> "Sarah, you're doing great, but preeclampsia can have long-term effects. You'll need to see your primary care doctor regularly to monitor your blood pressure and kidney function."</p>
+
+                    <p><span class="speaker">Sarah:</span> "Will this happen again if we have another baby?"</p>
+
+                    <p><span class="speaker">Dr. Patel:</span> "There is an increased risk, but we have ways to reduce it. Low-dose aspirin starting early in pregnancy, careful monitoring, and early delivery if needed. Many women who've had preeclampsia go on to have healthy subsequent pregnancies."</p>
+
+                    <p><span class="speaker">Miguel:</span> "What should we watch for at home?"</p>
+
+                    <p><span class="speaker">Dr. Patel:</span> "Severe headaches, vision changes, upper abdominal pain, or sudden swelling. Preeclampsia can occasionally recur in the weeks after delivery, though it's rare. But don't worry too much - you're through the worst of it."</p>
+
+                </div>
+
+                
+
+               
+
+                <div class="questions-box">
+
+                    <h4>Questions to answer</h4>
+
+                    <ol>
+
+                        <li>Why does Sarah's condition initially worsen after delivery?</li>
+
+                        <li>What evidence supports preeclampsia as primarily a placental disorder?</li>
+
+                        <li>What preventive measures for future pregnancies?</li>
+
+                    </ol>
+
+                </div>
+
+                
+
+                <div class="answer-box">
+
+                    <h4>Answers</h4>
+
+                    <ol>
+
+                        <li><strong>Post-delivery worsening:</strong> There's often a temporary worsening in the first 24-48 hours after delivery due to fluid shifts, continued circulation of anti-angiogenic factors, and the physiological stress of surgery. Recovery begins once the placental source of harmful factors is removed and the body clears existing toxins.</li>
+
+                        <li><strong>Placental disorder evidence:</strong> The fact that symptoms resolve after placental delivery, the disease only occurs during pregnancy/postpartum, and the root cause being poor placental implantation all support preeclampsia as fundamentally a placental disorder with systemic maternal effects.</li>
+
+                        <li><strong>Future pregnancy prevention:</strong> Low-dose aspirin starting at 12 weeks gestation, calcium supplementation, careful monitoring of blood pressure, early and regular prenatal care, and lifestyle modifications including weight management and exercise as appropriate. Close surveillance for early signs of recurrence.</li>
+
+                    </ol>
+
+                </div>
+
+            </div>
+
+            
+
+            <div class="credits-section">
+
+                <h3>Citations/Sources/Thanks</h3>
+
+                <p>I used <strong>Ms. Walker's Appendix C</strong> for the lab values, the 
+
+                <strong>American Heart Association</strong> for their guidelines and values, and the 
+
+                <strong>American Medical Association</strong> for the diagnostic criteria. Also thanks to Aitran for the idea and Adi (my roomate) for 
+
+                helping me not with a TON of the code (:</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
 </body>
 
 </html>
