@@ -1,0 +1,26 @@
+entrypoint = "index.html"
+modules = ["web"]
+
+[nix]
+channel = "stable-24_11"
+packages = ["static-web-server"]
+
+[deployment]
+publicDir = "/"
+deploymentTarget = "static"
+
+[workflows]
+runButton = "Serve static"
+
+[[workflows.workflow]]
+name = "Serve static"
+mode = "parallel"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "echo \"Serving HTML, open the Preview to see your output.\nTo see changes you make, you can hit the refresh button in the preview, you do \u001B[1mnot\u001B[0m have to stop and run again.\nConsole logs are available in the Preview devtools or your browser devtools.\" && static-web-server --host 0.0.0.0 --port 80 --root ./ --directory-listing false --cors-allow-origins '*' --index-files index.html --ignore-hidden-files true --disable-symlinks true --cache-control-headers false --log-level error --log-remote-address false > /dev/null 2>&1"
+waitForPort = 80
+
+[[ports]]
+localPort = 80
+externalPort = 80
